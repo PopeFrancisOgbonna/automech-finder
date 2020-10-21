@@ -1,0 +1,80 @@
+.sign-container{
+    display: flex;
+    max-width: 61%;
+    padding: 10px;
+    margin: 5% auto;
+    /* flex-wrap: wrap; */
+    border: 2px solid rgb(252, 206, 80);
+    box-shadow: 0 0 14px #4c4c4c;
+}
+.regDiv{
+    width: 450px;
+}
+
+.sideImage img{
+    width: 100%;
+    margin-bottom: 0;
+}
+.sideImage p{
+    background: #5471B4;
+    margin-top: 0;
+    height: 22%;
+    text-align: center;
+    color: #fff;
+    font-size: 1.8em;
+    position: relative;
+    padding: 5px;
+    top: -20px;
+}
+/* Form section css */
+.regDiv form{
+    padding: 10px;
+}
+.topItems{
+    display: flex;
+    justify-content: space-between;
+}
+.loginLink{
+    color: #fc3e05;
+}
+.loginLink:hover{
+    cursor: pointer;
+}
+.regDiv form >div{
+    padding: 5px;
+}
+.regInput{
+    padding: 5px;
+    width: 98%;
+}
+#regBtn{
+    padding: 10px;
+    background: #5471B4;
+    color: #fff;
+    border-radius: 5px;
+    border-style: none;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+}
+#regBtn:hover{
+    cursor: pointer;
+    background: #fc3f058e;
+}
+
+@media screen and (max-width:1024px){
+   .sign-container{
+       display: flex;
+       flex-direction: column;
+   } 
+   .sign-container{
+       margin-bottom: 0;
+   }
+   .regDiv {
+       width: 100%;
+       margin-top: 0;
+   }
+   .topItems{
+       justify-content: space-around;
+   }
+}

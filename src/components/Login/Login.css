@@ -1,0 +1,46 @@
+#loginForm{
+    max-width: 45%;
+    border: 2px solid rgb(252, 248, 210);
+    margin: 15% auto;
+    padding: 20px;
+    box-shadow: 0 0 15px #4c4c4c;
+}
+#logLogo{
+    width: 100px;
+    height: auto;
+    position: relative;
+    top: -60px;
+    border-radius: 50%;
+}
+.formHeader{
+    display: flex;
+    justify-content: space-between;
+}
+.formHeader span{
+    color: #fa1606;
+}
+.formHeader span:hover{
+    cursor: pointer;
+}
+input{
+    width: 97%;
+    padding: 5px;
+}
+.forgot{
+    color: #fa1606;
+}
+.forgot:hover{
+    cursor: pointer;
+}
+#loginBtn{
+    padding: 10px;
+    width: 100%;
+    color: #fff;
+    background: #faad06;
+    border-style: none;
+    font-size: 1.3em;
+}
+#loginBtn:hover{
+    background: #06ddfa;
+    cursor: pointer;
+}

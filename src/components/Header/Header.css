@@ -1,0 +1,29 @@
+span.container{
+    display: flex;
+    justify-content: space-between;
+    background: #03c2fc;
+    flex-wrap: wrap;
+}
+span div{
+    margin: auto 5%;
+}
+.title{
+    color: #fff;
+    margin-left: 15px;
+}
+.nav{
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    background: transparent;
+    color: #fff;
+    font-size: 1.2em;
+    border:1px solid #fff;
+}
+.nav:hover{
+    background:#fa8f48;
+}
+.navIcon{
+    height: 40px;
+    margin-left: 20px;
+}
