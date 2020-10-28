@@ -34,9 +34,9 @@ class  ServicePage extends React.Component{
                     {/* <img id="bannerImage" src={image} alt="hero"/> */}
                     <button id="actionBtn" onClick={()=>this.bookHandle("book")}>Get Your Car Fixed</button>
                 </div>
-                {this.state.bookService === ""?<ServiceTerms/> : null}
-                { this.state.bookService ==="book"?<Booking/>: 
-                    this.state.bookService ==="client"? <Clients/> : null
+                {this.state.bookService === ""?<ServiceTerms bookHandle={this.bookHandle}/> : null}
+                { this.state.bookService ==="book"?<Booking bookHandle={this.bookHandle}/>: 
+                    this.state.bookService ==="client"? <Clients bookHandle={this.bookHandle}/> : null
                 }
                 
                 <div className="Ratings">

@@ -4,7 +4,7 @@ import "./ServiceTerms.css";
 
 
 
-const ServiceTerms = () =>{
+const ServiceTerms = ({bookHandle}) =>{
 
     return (
         <div className="mainWrap">
@@ -21,7 +21,7 @@ const ServiceTerms = () =>{
                 </p>
             </div>
             <div className="callAction">
-                <p>We provide you access to professional and relaiable auto Mechanics, schedule flexibility, and high-quality spare parts.</p> <br/> <span>Get a Mechanic</span>
+                <p>We provide you access to professional and relaiable auto Mechanics, schedule flexibility, and high-quality spare parts.</p> <br/> <span onClick={()=>bookHandle("book")}>Get a Mechanic</span>
             </div>
         </div>
     )

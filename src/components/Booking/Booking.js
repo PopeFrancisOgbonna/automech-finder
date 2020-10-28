@@ -5,8 +5,8 @@ import  "./Booking.css";
 
 
 class Booking extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             answer:''
         }
@@ -18,7 +18,9 @@ class Booking extends React.Component{
     }
 
     render(){
+       
         return (
+            
             <div className="wrapper">
                 <div>
                     <div className="welcomeNote">
@@ -58,7 +60,7 @@ class Booking extends React.Component{
         
                             <input id="place-box" type="text" name="place" placeholder="Enter Location" required/>
                             <div>
-                                <button onClick={()=>this.updateAnswer("")} id="bookBtn">Send</button>
+                                <button onClick={()=>{this.updateAnswer(""); this.props.bookHandle("client")}} id="bookBtn">Send</button>
                             </div>
                         </div>
                         
