@@ -1,4 +1,5 @@
 import React from "react";
+import {Link } from "react-router-dom";
 import Pics from "./Capture.PNG";
 import "./Signup.css";
 
@@ -16,7 +17,7 @@ const Signup = () =>{
                     <form>
                         <div className="topItems">
                             <h3>Create Account </h3>
-                            <p><span className="loginLink">Login </span>instead?</p>
+                            <p><Link to="/login" className="loginLink"><span >Login </span></Link>instead?</p>
                         </div>
                         <div>
                             <label htmlFor="fullName">Full Name</label><br/>

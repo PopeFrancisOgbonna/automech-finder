@@ -2,6 +2,7 @@ span.container{
     display: flex;
     justify-content: space-between;
     background: #03c2fc;
+    padding: 5px;
     flex-wrap: wrap;
 }
 span div{
@@ -11,19 +12,34 @@ span div{
     color: #fff;
     margin-left: 15px;
 }
+.back{
+    margin: 10px;
+}
 .nav{
     border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
+    padding: 3px;
+    margin: 4px;
     background: transparent;
     color: #fff;
     font-size: 1.2em;
     border:1px solid #fff;
+    text-decoration: none;
 }
 .nav:hover{
     background:#fa8f48;
 }
+
 .navIcon{
     height: 40px;
     margin-left: 20px;
+}
+
+@media screen and (width:320px){
+    .title{
+        font-size: 1.8rem;
+    }
+    .navIcon{
+        height: 30px;
+        margin-left: 5px;
+    }
 }

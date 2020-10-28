@@ -1,3 +1,9 @@
 .footer > p{
     text-align: center;
+    padding: 10px;
+}
+.footer{
+    background:  #06C3FF;
+    color: #fff;
+    padding: 20px;
 }

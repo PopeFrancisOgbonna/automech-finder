@@ -32,7 +32,7 @@
     float: left;
 }
 
-.userDataInput{
+input{
     width: 97%;
     padding: 5px;
 }
@@ -59,6 +59,9 @@
 }
 .userData{
     padding: 5px;
+}
+.userData label{
+    margin-bottom: 24px;
 }
 
 @media screen and (max-width:980px){

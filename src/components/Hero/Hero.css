@@ -7,10 +7,8 @@
 .ads{
     width: 40%;
     padding: 5px;
-    background: blue;
-    /* position: relative;
-    left: 55%;
-    top: -21rem; */
+    background: linear-gradient(180deg, #FFFFFF 0.16%, rgba(255, 255, 255, 0) 92.52%), rgba(68, 99, 173, 0.99);
+    
     text-align: center;
 }
 .ads h1{
@@ -30,6 +28,10 @@
     border-style: none;
     border-radius: 5px;
     font-size: 1.4em;
+}
+#book:hover{
+    cursor: pointer;
+    background: #fc7c05fd;
 }
 
 @media screen and (max-width:900px){

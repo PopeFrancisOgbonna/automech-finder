@@ -1,0 +1,24 @@
+.search-container{
+    display: flex;
+    width: 23rem;
+    padding: 5px;
+}
+.searchInput{
+    width: 70%;
+}
+#filterBtn{
+    width: 30%;
+    font-size: 1.8em;
+    color: #fff;
+    background: #0288b1;
+    border-style: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.client-wrap{
+    padding: 10px;
+    border: 2px solid #4c4c4c;
+    border-radius: 10px;
+    width: 23rem;
+    margin: 2px auto;
+}

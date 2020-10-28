@@ -1,0 +1,46 @@
+.Section{
+    text-align: center;
+}
+.Section img{
+    max-width: 80%;
+    height: auto;
+}
+.section2{
+    background: #f8ebeb9a;
+    padding: 5px;
+}
+.section2 h1{
+    text-align: center;
+}
+.servicesDiv{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+.services{
+    border: 2px solid #f8ebeb9a;
+    margin: 4px ;
+    padding: 10px;
+    box-shadow: 0 0 15px #5c5b5bb6;
+}
+.services img{
+    width: 80%;
+}
+.services p{
+    max-width: 300px;
+}
+.banner{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    background: #89d6faf6;
+    padding: 5px;
+    color: #fff;
+    font-weight: bold;
+}
+
+@media screen and (max-width:980px){
+    .servicesDiv{
+        flex-wrap: wrap;
+    }
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Hero.css";
-import HeroImage from "./heroimage2.PNG"
+import HeroImage from "./heroimage2.PNG";
+import {Link} from "react-router-dom";
 
 
 
@@ -20,7 +21,7 @@ const Hero = () =>{
                         <li>Breake Inspection</li>
                         <li>Undercarriage Multipoint Inspection</li>
                     </ul>
-                    <button id="book">Book Now</button>
+                    <Link to="/login"><button id="book">Book Now</button></Link>
                 </div>
             </div>
         </div>
