@@ -17,13 +17,23 @@ class  ServicePage extends React.Component{
         super()
         this.state = {
             loggedIn:false,
-            bookService:''
+            bookService:'',
+            place: '',
+            filtered: false
         }
 
     }
 
     bookHandle = (handle) =>{
         this.setState({bookService: handle});
+    }
+
+    placeHandle = (event) =>{
+        this.setState({place: event.target.value});
+    }
+
+    handleFilter =()=>{
+        this.setState({filtered: !this.state.filtered});
     }
 
     render(){
@@ -35,8 +45,13 @@ class  ServicePage extends React.Component{
                     <button id="actionBtn" onClick={()=>this.bookHandle("book")}>Get Your Car Fixed</button>
                 </div>
                 {this.state.bookService === ""?<ServiceTerms bookHandle={this.bookHandle}/> : null}
-                { this.state.bookService ==="book"?<Booking bookHandle={this.bookHandle}/>: 
-                    this.state.bookService ==="client"? <Clients bookHandle={this.bookHandle}/> : null
+                { this.state.bookService ==="book"?
+                    <Booking bookHandle={this.bookHandle} placeHandle={()=>this.placeHandle}/>: 
+                    this.state.bookService ==="client"? 
+                        <Clients bookHandle={this.bookHandle} place ={this.state.place}
+                            placeHandle={()=>this.placeHandle}
+                            handleFilter={()=>this.handleFilter} filtered={this.state.filtered}
+                        /> : null
                 }
                 
                 <div className="Ratings">

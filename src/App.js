@@ -8,6 +8,8 @@ import PartnerSignUp from "./pages/PartnerSignUp/PartnerSignUp";
 import ServicePage from "./pages/ServicePage/ServicePage";
 import SignUp  from './pages/SignUpPage/SignUpPage';
 import PartnerLoginPage from "./pages/PartnerLoginPage/PartnerLoginPage"
+import PartnerDashboardPage from "./pages/PartnerDashboardPage/PartnerDashboardPage";
+import PartnerDashboard from './components/PartnerDashboard/PartnerDashboard';
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route path="/register" exact component={SignUp}/>
           <Route path="/partner" exact component={PartnerSignUp} />
           <Route path="/dashboard" exact component={ServicePage}/>
+          <Route path="/partner/dashboard" exact component={PartnerDashboardPage}/>
           <Route path="/404" component={NotFound} />
           <Redirect to="/404"/>
         </Switch>

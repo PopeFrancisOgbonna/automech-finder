@@ -58,7 +58,9 @@ class Booking extends React.Component{
                             </select>
                             </div>
         
-                            <input id="place-box" type="text" name="place" placeholder="Enter Location" required/>
+                            <input id="place-box" type="text" name="place" placeholder="Enter Location" 
+                                required onChange={this.props.placeHandle()}
+                            />
                             <div>
                                 <button onClick={()=>{this.updateAnswer(""); this.props.bookHandle("client")}} id="bookBtn">Send</button>
                             </div>

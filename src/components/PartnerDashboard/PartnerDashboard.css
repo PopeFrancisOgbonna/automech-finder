@@ -1,0 +1,53 @@
+#customersTable{
+    text-align: center;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    width: 100%;
+}
+#customersTable td, #customerTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customersTable tr:nth-child(even){
+    background: #f2f2f2;
+}
+#customersTable tr:hover{
+    background: #ddd;
+}
+#customersTable th {
+    padding-top:12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background: #4caf4c;
+    color: #fff;
+}
+.partnerDecision{
+    display: flex;
+}
+.partnerDecision p{
+    border: 1px solid #fff;
+    padding: 3px;
+}
+#acc{
+    background: #03fd03;
+    color: #fff;
+    margin-left: 3px;
+    border-radius: 5px;
+    padding: 5px;
+} 
+#rej {
+    background: #fd4a03;
+    color: #fff;
+    margin-left: 3px;
+    border-radius: 5px;
+    padding: 5px;
+}
+#acc:hover{
+    background: #029eb3;
+    cursor: pointer;
+}
+#rej:hover{
+    background: #016674;
+    cursor: pointer;
+}
