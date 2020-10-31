@@ -101,9 +101,9 @@ const PartnerSignUp = () =>{
                             <label htmlFor="confirm">Confirm Password</label><br/>
                             <input type="password" name="confirm" required/>
                         </div>
-                        <di>
+                        <div>
                             <input id="sendBtn"  type="submit" value="Create Account"/>
-                        </di>
+                        </div>
                     </form>
                 </div>
             </div>
