@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/automech-finder/static/css/main.f0620fcd.chunk.css",
+    "main.js": "/automech-finder/static/js/main.3544129b.chunk.js",
+    "main.js.map": "/automech-finder/static/js/main.3544129b.chunk.js.map",
+    "runtime-main.js": "/automech-finder/static/js/runtime-main.ad4795f3.js",
+    "runtime-main.js.map": "/automech-finder/static/js/runtime-main.ad4795f3.js.map",
+    "static/css/2.20aa2d7b.chunk.css": "/automech-finder/static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.3d6df964.chunk.js": "/automech-finder/static/js/2.3d6df964.chunk.js",
+    "static/js/2.3d6df964.chunk.js.map": "/automech-finder/static/js/2.3d6df964.chunk.js.map",
+    "index.html": "/automech-finder/index.html",
+    "static/css/2.20aa2d7b.chunk.css.map": "/automech-finder/static/css/2.20aa2d7b.chunk.css.map",
+    "static/css/main.f0620fcd.chunk.css.map": "/automech-finder/static/css/main.f0620fcd.chunk.css.map",
+    "static/js/2.3d6df964.chunk.js.LICENSE.txt": "/automech-finder/static/js/2.3d6df964.chunk.js.LICENSE.txt",
+    "static/media/Capture.75528b63.PNG": "/automech-finder/static/media/Capture.75528b63.PNG",
+    "static/media/brake.f62af3aa.jpg": "/automech-finder/static/media/brake.f62af3aa.jpg",
+    "static/media/coil.a9a96410.webp": "/automech-finder/static/media/coil.a9a96410.webp",
+    "static/media/coolant.38e68cd8.jpg": "/automech-finder/static/media/coolant.38e68cd8.jpg",
+    "static/media/enginT.0efa2d10.jpg": "/automech-finder/static/media/enginT.0efa2d10.jpg",
+    "static/media/engine.6c59c38d.png": "/automech-finder/static/media/engine.6c59c38d.png",
+    "static/media/heroimage2.c6247af3.PNG": "/automech-finder/static/media/heroimage2.c6247af3.PNG",
+    "static/media/ServicePage.css": "/automech-finder/static/media/image.cb87e69a.jpeg",
+    "static/media/logo.da90dbfb.jpeg": "/automech-finder/static/media/logo.da90dbfb.jpeg",
+    "static/media/oops.761b23c8.png": "/automech-finder/static/media/oops.761b23c8.png",
+    "static/media/quality.1505b798.PNG": "/automech-finder/static/media/quality.1505b798.PNG",
+    "static/media/steering.665d311e.jpg": "/automech-finder/static/media/steering.665d311e.jpg",
+    "static/media/trans.1c2c6748.PNG": "/automech-finder/static/media/trans.1c2c6748.PNG",
+    "static/media/user3.922e1de7.png": "/automech-finder/static/media/user3.922e1de7.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ad4795f3.js",
+    "static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.3d6df964.chunk.js",
+    "static/css/main.f0620fcd.chunk.css",
+    "static/js/main.3544129b.chunk.js"
+  ]
+}
