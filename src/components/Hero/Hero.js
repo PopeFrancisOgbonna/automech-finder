@@ -21,7 +21,7 @@ const Hero = () =>{
                         <li>Breake Inspection</li>
                         <li>Undercarriage Multipoint Inspection</li>
                     </ul>
-                    <Link to="/login"><button id="book">Book Now</button></Link>
+                    <Link to="/login"><button id="book">Demand Services Now</button></Link>
                 </div>
             </div>
         </div>

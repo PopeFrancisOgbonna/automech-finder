@@ -1,19 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Carousel } from "react-bootstrap"
 import user1 from "./user1.png";
 import user2 from "./user2.png";
 import user3 from "./user3.png";
 import mobile from "./mobile.png";
 import increase from "./increase.png";
 import hand from "./hand.png";
+import {useForm} from "react-hook-form";
+import Axios from 'axios';
 import "./PartnerSignUp.css";
 
 
-
+let message = "" ;
+let sucessMsg = "";
 const PartnerSignUp = () =>{
+   
+    
+    const submitForm = (data) =>{
+        console.log(data);
+        console.log(password, confirm);
+        if(password === confirm){
+            console.log(message, sucessMsg);
+            message = "";
+            return Axios.post("http://localhost:8080/partners", data)
+            .then(async (res) =>{
+                const data = await res.data;
+                sucessMsg = `${data} Redirecting...`;
+                setTimeout(() => {
+                    window.location.href="/partner/login"
+                }, 3000);
+               
+            })
+            .catch((err)=>{
+                return message = err + " Please try again.";
+            })
+        }else{
+            message = "Password do not match."
+            console.log(message, sucessMsg);
+        }
+        
+    }
+    const [password, setPassword] = useState('');
+    const [confirm, setConfirm] = useState('');
+   
 
-
+   
+        const {register, handleSubmit} = useForm();
     return (
         <div>
             <Header/>
@@ -23,13 +58,53 @@ const PartnerSignUp = () =>{
                     <p>Be part of a community of service experts that have seen their Bussiness amplified with AutoMechanic Finder Platform.</p>
                 </div>
                 <div className="slider-container">
-                    <div className="imgH">
+                    {/* <div className="imgH">
                         <img className="userImage" src={user1} alt="partner" />
                         <p className="user">Mr. Kingsely Okafor</p>
                     </div>
                     <div className="testimony">
                         <p>"Since I joined AutoMechanic Finder My Bussiness has grown financially!</p>
-                    </div>
+                    </div> */}
+                    <Carousel>
+                        <Carousel.Item>
+                            <img
+                            className="d-block "
+                            style={{"height":"250px", "width":"450px"}}
+                            src={user1}
+                            alt="First slide"
+                            />
+                            <Carousel.Caption>
+                            <h3>Chijioke Nwafor</h3>
+                            <p>Since I joined AutoMechanic Finder My Bussiness has grown financially!</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                            className="d-block"
+                            style={{"height":"250px", "width":"450px"}}
+                            src={user2}
+                            alt="Third slide"
+                            />
+
+                            <Carousel.Caption>
+                            <h3>Allen Thomas</h3>
+                            <p>AutoMechanic Mechanic finder is a nice place to grow your audience. I make $400 on a daily basis.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                            className="d-block"
+                            style={{"height":"250px", "width":"450px"}}
+                            src={user3}
+                            alt="Third slide"
+                            />
+
+                            <Carousel.Caption>
+                            <h3>Taiwo Abiodun</h3>
+                            <p>I now make more income from my business, Thanks to AutoMechanic platform!</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    </Carousel>
                 </div>
             </div>
             <div className="formandIcon">
@@ -48,60 +123,76 @@ const PartnerSignUp = () =>{
                     </div>
                 </div>
                 <div className="sform">
-                    <form>
-                        <h1>Signup as a Partner with us!</h1>
-                        <div>
-                            <label htmlFor="fullName">Full Name</label><br/>
-                            <input type="text" name="fullName" required/>
+                    <form onSubmit={handleSubmit(submitForm)}>
+                        <h2>Signup as a Partner with us!</h2>
+                        <div className="inputFormWrap">
+                            <div>
+                                <label htmlFor="fullName">Full Name</label><br/>
+                                <input type="text" ref={register} name="fullName" required/>
+                            </div>
+                            <div>
+                                <label htmlFor="email">Email</label><br/>
+                                <input type="email" ref={register} name="email" required/>
+                            </div>
                         </div>
-                        <div>
-                            <label htmlFor="email">Email</label><br/>
-                            <input type="email" name="email" required/>
+                        
+                        <div className="inputFormWrap">
+                            <div>
+                                <label htmlFor="phone">Phone No.</label><br/>
+                                <input type="text" ref={register} name="phone" required/>
+                            </div>
+                            <div>
+                                <label htmlFor="businessName">Company Name</label><br/>
+                                <input type="text" ref={register} name="businessName" required/>
+                            </div>
                         </div>
-                        <div>
-                            <label htmlFor="phone">Phone No.</label><br/>
-                            <input type="text" name="phone" required/>
+                        
+                        <div className="inputFormWrap">
+                            <div>
+                                <label htmlFor="serviceType">Select Service Type</label><br/>
+                                <select ref={register} name="serviceType">
+                                    <option value="auto-electrical">Auto Electrical</option>
+                                    <option value="heavy-engine">Heavy Engine AutoMechanic</option>
+                                    <option value="small-engine">Small Engine AutoMechanic</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label htmlFor="serviceSpec">Select Specialty</label><br/>
+                                <select ref={register} name="serviceSpec">
+                                    <option value="allbrand">General AutoMechanic</option>
+                                    <option value="Toyota">Toyota</option>
+                                    <option value="Honda">Honda</option>
+                                    <option value="Golf">Golf</option>
+                                    <option value="Ivm">IVM</option>
+                                    <option value="others">Others</option>
+                                </select>
+                            </div>
                         </div>
-                        <div>
-                            <label htmlFor="businessName">Company Name</label><br/>
-                            <input type="text" name="businessName" required/>
+                        
+                        <div className="inputFormWrap">
+                            <div>
+                                <label htmlFor="address">Office Address</label><br/>
+                                <input ref={register} name="address" type="text" required/>
+                            </div>
+                            <div>
+                                <label htmlFor="place">City/State</label><br/>
+                                <input ref={register} name="place" type="text" required/>
+                            </div>
                         </div>
-                        <div>
-                            <label htmlFor="service">Select Service Type</label><br/>
-                            <select>
-                                <option value="auto-electrical">Auto Electrical</option>
-                                <option value="heavy-engine">Heavy Engine AutoMechanic</option>
-                                <option value="small-engine">Small Engine AutoMechanic</option>
-                            </select>
+                        
+                        <div className="inputFormWrap">
+                            <div>
+                                <label htmlFor="password">password</label><br/>
+                                <input ref={register} onChange={(e) => setPassword(e.target.value)} type="password" name="password" required/>
+                            </div>
+                            <div>
+                                <label htmlFor="confirm">Confirm Password</label><br/>
+                                <input ref={register} onChange={(e) => setConfirm(e.target.value)} type="password" name="confirm" required/>
+                            </div>
                         </div>
+                        
                         <div>
-                            <label htmlFor="service">Select Specialty</label><br/>
-                            <select>
-                                <option value="allbrand">General AutoMechanic</option>
-                                <option value="Toyota">Toyota</option>
-                                <option value="Honda">Honda</option>
-                                <option value="Golf">Golf</option>
-                                <option value="Ivm">IVM</option>
-                                <option value="others">Others</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label htmlFor="address">Office Address</label><br/>
-                            <input name="address" type="text" required/>
-                        </div>
-                        <div>
-                            <label htmlFor="place">City/State</label><br/>
-                            <input name="place" type="text" required/>
-                        </div>
-                        <div>
-                            <label htmlFor="password">password</label><br/>
-                            <input type="password" name="password" required/>
-                        </div>
-                        <div>
-                            <label htmlFor="confirm">Confirm Password</label><br/>
-                            <input type="password" name="confirm" required/>
-                        </div>
-                        <div>
+                        { message !== ""?<p style={{"color":"red"}}>{message}</p>: <p style={{"color":"green"}}>{sucessMsg}</p> }
                             <input id="sendBtn"  type="submit" value="Create Account"/>
                         </div>
                     </form>
@@ -119,6 +210,7 @@ const PartnerSignUp = () =>{
             <Footer/>
         </div>
     )
+ 
 }
 
 export default PartnerSignUp;

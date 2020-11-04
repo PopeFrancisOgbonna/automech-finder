@@ -8,6 +8,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Booking from "../../components/Booking/Booking";
 import Clients from "../../components/Clients/Clients";
+import Axios from 'axios';
 import "./ServicePage.css";
 
 
@@ -19,21 +20,50 @@ class  ServicePage extends React.Component{
             loggedIn:false,
             bookService:'',
             place: '',
-            filtered: false
+            filtered: false,
+            user: {},
+            errors:'',
+            mech: []
         }
 
     }
 
     bookHandle = (handle) =>{
+        // this.getMechs();
         this.setState({bookService: handle});
+        console.log(this.state.user)
     }
-
+    getUser = () =>{
+        const name = localStorage.getItem('userName');
+        const email = localStorage.getItem('email');
+        const phone = localStorage.getItem('phone');
+        
+        var  users = {name, email, phone}
+        this.setState({user:users});
+    }
+    getMechs = () =>{
+        Axios.get("http://localhost:8080/mechanics")
+            .then(async (res)=>{
+                const data = await res.data;
+                this.setState({mech: data})
+            })
+            .catch((err)=>this.setState({errors:err}))
+       
+    }
     placeHandle = (event) =>{
         this.setState({place: event.target.value});
     }
-
+    clearPlace = () =>{
+        this.setState({place: ""});
+    }
     handleFilter =()=>{
         this.setState({filtered: !this.state.filtered});
+    }
+    // let users;
+    componentDidMount(){
+        this.getUser();
+        this.getMechs();
+        
     }
 
     render(){
@@ -51,9 +81,12 @@ class  ServicePage extends React.Component{
                         <Clients bookHandle={this.bookHandle} place ={this.state.place}
                             placeHandle={()=>this.placeHandle}
                             handleFilter={()=>this.handleFilter} filtered={this.state.filtered}
+                            mech={this.state.mech}
+                            user={this.state.user}
+                            clearPlace={this.clearPlace}
                         /> : null
+                        
                 }
-                
                 <div className="Ratings">
                     <div id="rateDiv1">
                         <img src={trans} alt="Transparency"/>   

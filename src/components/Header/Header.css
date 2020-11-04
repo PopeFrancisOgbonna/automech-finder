@@ -8,14 +8,14 @@ span.header-container{
 span div{
     margin: auto 5%;
 }
-.title{
+.titles{
     color: #fff;
     margin-left: 15px;
 }
 .back{
     margin: 10px;
 }
-.nav{
+.navs{
     border-radius: 5px;
     padding: 3px;
     margin: 4px;
@@ -25,20 +25,22 @@ span div{
     border:1px solid #fff;
     text-decoration: none;
 }
-.nav:hover{
+.navs:hover{
     background:#fa8f48;
+    text-decoration: none;
+    color: #fff;
 }
 
-.navIcon{
+.navIcons{
     height: 40px;
     margin-left: 20px;
 }
 
 @media screen and (width:320px){
-    .title{
+    .titles{
         font-size: 1.8rem;
     }
-    .navIcon{
+    .navIcons{
         height: 30px;
         margin-left: 5px;
     }

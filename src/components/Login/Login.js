@@ -1,5 +1,6 @@
 import React from "react";
-import {Link, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
+import Axios from "axios";
 import logo from "./logo.jpeg"
 import './Login.css'
 
@@ -22,13 +23,32 @@ class Login extends React.Component{
     submitForm = (e) =>{
         e.preventDefault();
         if(this.validateForm()){
+            const data = this.state.fields;
             let fields = {};
             console.log(this.state.fields)
             fields["userName"] = "";
             fields["userPassword"] = "";
             this.setState({fields: fields});
-            alert("Login was Successful!");
-            window.location.href="/dashboard"
+            return Axios.post("http://localhost:8080/clients/login", data)
+                .then(async (res) =>{
+                    if(res.status === 200){
+                        const user = await res.data[0];
+                        localStorage.setItem("userName", user.name);
+                        localStorage.setItem("email", user.email);
+                        localStorage.setItem("phone",user.phone);
+                        console.log(user);
+                        setTimeout(() => {
+                            window.location.href="/dashboard"
+                        }, 3000);
+                    }else{
+                        window.alert("Invalid Email and Password.");
+                    }
+                    // 
+                })
+                .catch((err) =>{
+                    window.alert(err);
+                });
+           
         }
     }
 

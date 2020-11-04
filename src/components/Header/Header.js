@@ -11,12 +11,12 @@ const Header = () =>{
     return(
         <div>
             <span className="header-container">
-                <h1 className="title">AutoMechanic Finder </h1>
+                <h1 className="titles">AutoMechanic Finder </h1>
                 <div>
                     <Link className="back" to="/"><img src={home} alt="home"/></Link>
-                    <Link to="/partner" className="nav">Become a Partner</Link>
-                    <Link to="/login" className="nav"> Login</Link>
-                    <img className="navIcon" src={Icon} alt="userIcon"/>
+                    <Link to="/partner" className="navs">Become a Partner</Link>
+                    <Link to="/login" className="navs"> Login</Link>
+                    {localStorage.loggedin === true?<img className="navIcons" src={Icon} alt="userIcon"/>: null}
                 </div>
             </span>
         </div>

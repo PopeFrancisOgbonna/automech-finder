@@ -10,8 +10,8 @@
 .regDiv{
     width: 450px;
 }
-
 .sideImage img{
+    height: 80%;
     width: 100%;
     margin-bottom: 0;
 }
@@ -40,6 +40,8 @@
 }
 .loginLink:hover{
     cursor: pointer;
+    text-decoration: none;
+    color: #fc3e05;
 }
 .regDiv form >div{
     padding: 5px;
