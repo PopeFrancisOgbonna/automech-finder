@@ -9,12 +9,11 @@ import ServicePage from "./pages/ServicePage/ServicePage";
 import SignUp  from './pages/SignUpPage/SignUpPage';
 import PartnerLoginPage from "./pages/PartnerLoginPage/PartnerLoginPage"
 import PartnerDashboardPage from "./pages/PartnerDashboardPage/PartnerDashboardPage";
-import PartnerDashboard from './components/PartnerDashboard/PartnerDashboard';
 
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route path="/" component={HomePage} exact />
           <Route path="/home" component={HomePage} exact/>
