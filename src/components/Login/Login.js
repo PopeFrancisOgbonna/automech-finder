@@ -87,6 +87,7 @@ class Login extends React.Component{
     render(){
         return(
             <div>
+               
                 <form id="loginForm" method="post" onSubmit={this.submitForm}>
                     <div className="formHeader">
                         <h2>Login</h2>
@@ -105,7 +106,7 @@ class Login extends React.Component{
                         <p className="errorMsg">{this.state.errors.userPassword}</p>
                     </div>
                     <div className="toggle">
-                        <Link className="partnerLogin" to="/partner/login" >Click to Login as a Partner</Link>
+                        <Link className="partnerLogin" to="/partner/login" >Click to Login as a Mechanic</Link>
                         <p className="forgot"> Forgot password?</p>
                     </div>
                    <button id="loginBtn" type="submit">Login</button>

@@ -76,7 +76,7 @@ class  ServicePage extends React.Component{
                 </div>
                 {this.state.bookService === ""?<ServiceTerms bookHandle={this.bookHandle}/> : null}
                 { this.state.bookService ==="book"?
-                    <Booking bookHandle={this.bookHandle} placeHandle={()=>this.placeHandle}/>: 
+                    <Booking bookHandle={this.bookHandle} placeHandle={()=>this.placeHandle} place={this.state.place}/>: 
                     this.state.bookService ==="client"? 
                         <Clients bookHandle={this.bookHandle} place ={this.state.place}
                             placeHandle={()=>this.placeHandle}

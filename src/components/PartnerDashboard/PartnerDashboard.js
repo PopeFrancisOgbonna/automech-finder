@@ -35,11 +35,12 @@ const PartnerDashboard = ({customers, loadCustomerTable}) =>{
             .then(async (res) =>{
                 const updated = await res.data;
                 if(updated > 0){
-                    setMsg("Request Accepted.");
+                    alert("Request Accepted Successfully.")
+                    setMsg(customers[row-1].clients+" Request Accepted.");
                     setErrorMsg("");
                     setTimeout(() => {
                         loadCustomerTable();
-                    }, 1000);
+                    }, 3000);
                     setTimeout(() => {
                         confirmDelivery();
                         loadCustomerTable();
@@ -63,7 +64,8 @@ const PartnerDashboard = ({customers, loadCustomerTable}) =>{
             .then(async (res) =>{
                 const updated = await res.data;
                 if(updated > 0){
-                    setMsg("Request has been Rejected.");
+                    alert("Request rejected.");
+                    setMsg(customers[row-1].clients+" Request has been Rejected.");
                     setErrorMsg("");
                     setTimeout(() => {
                         loadCustomerTable();

@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import "./ClientList.css";
 import avatar from "./linda.png";
 import Axios from "axios";
+// import {InfoPopUp, RejectPopUp, AcceptPopUp} from "../../components/PopUp/PopUp";
 
 
-const ClientList = ({mechanics, place, serviceAgents, filtered, user}) =>{
-    const [message, setMessage] = useState('')
+const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, user}) =>{
+    const [message, setMessage] = useState('');
+    const [popComp, setPopComp] = useState('accepted');
+
+    //function to send request from unfiltered List
     const request = (e) =>{
         setMessage("")
         // const id =e.currentTarget.getAttribute("id-mine");
@@ -18,11 +22,43 @@ const ClientList = ({mechanics, place, serviceAgents, filtered, user}) =>{
             client_email: user.email,
             client_phone: user.phone
         }
+        setName(mechanics[index].company);
+
         Axios.post("http://localhost:8080/service/request",data)
             .then(async (res) =>{
-                let msg = await res.data;
-                if(msg.toLowerCase() === "ok")
-                setMessage("Request Delivered to Agent Successfully!");
+                let id = await res.data[0].id;
+                console.log(id);
+                if(id > 0 ){
+                    setMessage("Request Delivered to Agent Successfully!");
+                    setTimeout(() => {
+                        console.log(id);
+                        console.log('before ' +popComp)
+                        Axios.get("http://localhost:8080/service/requests/"+ id)
+                            .then(async (res) =>{
+                                let data1 = await res.data[0].remark;
+                                // if(data1){
+                                    if(data1.toLowerCase() ===""){
+                                    
+                                        // alert(data.agent_name +" unavailable at the");
+                                        console.log( "afeter "+ popComp);
+                                        check('unavailable')
+                                    }else if (data1.toLowerCase() ==="accepted"){
+                                        setPopComp(data1.toLowerCase())
+                                        alert(`${data.agent_name} will be with you in a moment. Please wait!`)
+                                        check("accepted");
+                                    }else if(data1.toLowerCase() ==="rejected"){
+                                        setPopComp(data1.toLowerCase())
+                                        alert(`Request Declined. Please choose another Agent`)
+                                        check("rejected");
+                                    }
+                                // }
+                            })
+                            .catch((err) =>{
+                                console.log(err)
+                            })
+                            
+                    }, 10000);
+                }
             })
             .catch((err) =>{
                 console.log(err);
@@ -37,10 +73,11 @@ const ClientList = ({mechanics, place, serviceAgents, filtered, user}) =>{
             setMessage('')
         }, 5000);
     }
+
+    //Funtion to send request form filtered List
     const requestAgent = (e) =>{
-        // const id =e.currentTarget.getAttribute("id-mine");
         const index = e.currentTarget.getAttribute("myindex");
-        // let date = new Date();
+        
         let data ={
             agent_name: serviceAgents[index].company,
             agent_email: serviceAgents[index].email,
@@ -49,11 +86,32 @@ const ClientList = ({mechanics, place, serviceAgents, filtered, user}) =>{
             client_email: user.email,
             client_phone: user.phone
         }
+        
         Axios.post("http://localhost:8080/service/request",data)
             .then(async (res) =>{
-                let msg = await res.data;
-                if(msg.toLowerCase() === "ok")
-                setMessage("Request Delivered to Agent Successfully!");
+                let id = await res.data[0].id;
+                console.log(id);
+                if(id > 0 ){
+                    setMessage("Request Delivered to Agent Successfully!");
+                    setTimeout(() => {
+                        console.log(id);
+                        Axios.get("http://localhost:8080/service/requests/"+ id)
+                            .then(async (res) =>{
+                                let data1 = res.data[0].remark;
+                                if(data1.toLowerCase() ===""){
+                                    alert(data.agent_name +" unavailable at the moment.");
+                                }else if (data1.toLowerCase() ==="accepted"){
+                                    alert(`${data.agent_name} will be with you in a moment. Please wait!`)
+                                }else if(data1.toLowerCase() ==="rejected"){
+                                    alert(`Request Declined. Please choose another Agent`)
+                                }
+                            })
+                            .catch((err) =>{
+                                console.log(err)
+                            })
+                            
+                    }, 30000);
+                }
             })
             .catch((err) =>{
                 console.log(err);
@@ -66,14 +124,17 @@ const ClientList = ({mechanics, place, serviceAgents, filtered, user}) =>{
         alert(`Request Sent Successfully to ${data.agent_name}. You'll recieve a response soon!`);
         setTimeout(() => {
             setMessage('')
-        }, 5000);
+        }, 10000);
+        
     }
 
+    
 
     return (
         <div>
+            
             <p style={{"color":"green","fontSize":"1.4em"}}>{message}</p>
-             { place === ""?
+             { place.toLowerCase() === "all"?
                 mechanics.map((mechanic,index) =><div  key={mechanic.id} className="client-wrap">
                     <p><span className="mechLabel">Name:</span> {mechanic.company}</p>
                     <p><span className="mechLabel">specialty:</span> {mechanic.specialty}</p>

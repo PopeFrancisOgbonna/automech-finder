@@ -8,13 +8,24 @@ class Booking extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            answer:''
+            answer:'',
+            errorMsg:''
         }
         this.updateAnswer = this.updateAnswer.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
     }
     
     updateAnswer(event) {
         this.setState({answer: event})
+    }
+    handleSearch(){
+        if(this.props.place === ""){
+            this.setState({errorMsg: "Enter a Location or Type All to view all available Mechanics."});
+            return;
+        }
+        this.setState({errorMsg: ""});
+        this.props.bookHandle("client");
+        this.updateAnswer("");
     }
 
     render(){
@@ -58,11 +69,12 @@ class Booking extends React.Component{
                             </select>
                             </div>
         
-                            <input id="place-box" type="text" name="place" placeholder="Enter Location" 
+                            <input id="place-box" type="text" name="place" placeholder="Enter Location"
                                 required onChange={this.props.placeHandle()}
                             />
                             <div>
-                                <button onClick={()=>{this.updateAnswer(""); this.props.bookHandle("client")}} id="bookBtn">Send</button>
+                                {this.state.errorMsg !==""?<p style={{"color":"red"}}>{this.state.errorMsg}</p>:null}
+                                <button onClick={()=>{this.handleSearch() }} id="bookBtn">Send</button>
                             </div>
                         </div>
                         

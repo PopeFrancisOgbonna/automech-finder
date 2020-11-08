@@ -3,3 +3,33 @@
     padding: 6px;
     margin: 10px 0;
 }
+.mainAction-wrap{
+    text-align: center;
+    background: chocolate;
+    padding: 15px;
+}
+#mainActnBtn{
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 5px;
+    color: #ffffff;
+    background: transparent;
+}
+#mainActnBtn:hover{
+    cursor: pointer;
+    background: #424242;
+}
+.logAddsWrap{
+    display: flex;
+    justify-content: space-evenly;
+}
+.logAdds{
+    width: 35%;
+    padding: 5px;
+    /* border: 2px solid #2d2e2e; */
+    border-radius: 25px;
+    box-sizing: border-box;
+    box-shadow: 0 0 12px #424242;
+    text-align: center;
+    margin: 2%;
+}

@@ -36,7 +36,7 @@ const PartnerLogin = () =>{
         <div>
             <form id="loginForm" onSubmit={handleSubmit(submit)}>
                 <div className="formHeader">
-                    <h2>Partner Login</h2>
+                    <h2>Mechanics Login</h2>
                     <img id="logLogo" src={logo} alt="autologo"/>
                     <p><Link className="span" to="/partner">Create account</Link> instead?</p>
                 </div>
@@ -50,7 +50,7 @@ const PartnerLogin = () =>{
                     <input ref={register} name="userPassword" type="password" required/>
                 </div>
                 <div className="toggle">
-                    <Link className="partnerLogin" to="/login" >Not a Partner? Click Here</Link>
+                    <Link className="partnerLogin" to="/login" >Not a Mechanic? Click Here</Link>
                     <p className="forgot"> Forgot password?</p>
                 </div>
                 <div>

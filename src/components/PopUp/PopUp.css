@@ -1,0 +1,33 @@
+.popOuter{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #2c2c2c;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    text-align: center;
+}
+.popContents{
+    width: 65%;
+    border: 2px solid #023f79;
+    margin:5% auto;
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px #5590fd;
+    border-radius: 10px;
+    padding: 10px;
+}
+.agentCompany{
+    font-weight: bold;
+}
+.PopUps{
+    border-style: none;
+    padding: 5px;
+    color: #fff;
+    background: #fa2020;
+    border-radius: 5px;
+}
+.hide{
+    display: none;
+}

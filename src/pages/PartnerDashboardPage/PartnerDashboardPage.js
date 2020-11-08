@@ -3,6 +3,9 @@ import "./PartnerDashboardPage.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import biz from "./biz.png";
+import job from "./job.png";
+import order from "./order.png";
+import schedule from "./schedule.png";
 import PartnerDashboard from "../../components/PartnerDashboard/PartnerDashboard";
 import Axios from 'axios';
 
@@ -75,19 +78,37 @@ class PartnerDashboardPage extends React.Component{
         return (
             <div>
                 <Header/>
-                <h1 id="patTitle" onClick={this.show} >Welcome to your {this.state.partner.company} Dashboard</h1>
-                <label onClick={this.handleShow}>See Transaction logs</label>
+                <h1 id="patTitle" onClick={this.show} >Welcome to {this.state.partner.company} Dashboard</h1>
+                
                 <div>
                     <img src={biz} alt="biz" style={{"width":"100%","height":"350px"}}/>
                     <p>A Satisfied customer is the best business strategy of all, Chase the vision not money, the money will end
                         up following you.   
                     </p>
-                    <button onClick={this.handleShow}>See Transaction Log</button>
+                </div>
+                <div className="mainAction-wrap">
+                    <button id="mainActnBtn" onClick={this.handleShow}>See Transaction Log</button>
                 </div>
                 {!this.state.show?
                     <PartnerDashboard customers={this.state.clients}
                         loadCustomerTable={this.loadCustomerTable}
                     />:null}
+                <div className="logAddsWrap">
+                    <div className="logAdds">
+                        <img src={job} alt="portfolio"/>
+                        <p className="txtMsg">Make up to $25/hour. Our top professionals make up to $1000 a week.</p>
+                    </div>
+
+                    <div className="logAdds">
+                        <img src={order} alt="order"/>
+                        <p className="txtMsg">No more tracking down your customers for payments. Your payments are direct deposited into your bank account soon after the job is complete.</p>
+                    </div>
+
+                    <div className="logAdds">
+                        <img src={schedule} alt="appointment"/>
+                        <p className="txtMsg">Build a full schedule of your customers or simply add a few jobs on the side.</p>
+                    </div>
+                </div>
                 <Footer/>
             </div>
         )

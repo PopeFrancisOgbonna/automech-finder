@@ -124,7 +124,7 @@ const PartnerSignUp = () =>{
                 </div>
                 <div className="sform">
                     <form onSubmit={handleSubmit(submitForm)}>
-                        <h2>Signup as a Partner with us!</h2>
+                        <h2>Signup as an AutoMechanic!</h2>
                         <div className="inputFormWrap">
                             <div>
                                 <label htmlFor="fullName">Full Name</label><br/>
