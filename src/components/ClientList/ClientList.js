@@ -57,7 +57,7 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
                                 console.log(err)
                             })
                             
-                    }, 10000);
+                    }, 20000);
                 }
             })
             .catch((err) =>{
@@ -99,18 +99,25 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
                             .then(async (res) =>{
                                 let data1 = res.data[0].remark;
                                 if(data1.toLowerCase() ===""){
-                                    alert(data.agent_name +" unavailable at the moment.");
+                                    
+                                    // alert(data.agent_name +" unavailable at the");
+                                    console.log( "afeter "+ popComp);
+                                    check('unavailable')
                                 }else if (data1.toLowerCase() ==="accepted"){
+                                    setPopComp(data1.toLowerCase())
                                     alert(`${data.agent_name} will be with you in a moment. Please wait!`)
+                                    check("accepted");
                                 }else if(data1.toLowerCase() ==="rejected"){
+                                    setPopComp(data1.toLowerCase())
                                     alert(`Request Declined. Please choose another Agent`)
+                                    check("rejected");
                                 }
                             })
                             .catch((err) =>{
                                 console.log(err)
                             })
                             
-                    }, 30000);
+                    }, 20000);
                 }
             })
             .catch((err) =>{
@@ -124,7 +131,7 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
         alert(`Request Sent Successfully to ${data.agent_name}. You'll recieve a response soon!`);
         setTimeout(() => {
             setMessage('')
-        }, 10000);
+        }, 5000);
         
     }
 
@@ -132,33 +139,37 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
 
     return (
         <div>
-            
-            <p style={{"color":"green","fontSize":"1.4em"}}>{message}</p>
-             { place.toLowerCase() === "all"?
-                mechanics.map((mechanic,index) =><div  key={mechanic.id} className="client-wrap">
-                    <p><span className="mechLabel">Name:</span> {mechanic.company}</p>
-                    <p><span className="mechLabel">specialty:</span> {mechanic.specialty}</p>
-                    <p id-mine={mechanic.phone}><span className="mechLabel">Phone No.</span> {mechanic.phone}</p>
-                    <p><span className="mechLabel">Email:</span> {mechanic.email}</p>
-                    <p><span className="mechLabel">Address:</span> {mechanic.office_address}</p>
-                    <p><span className="mechLabel">City:</span> {mechanic.city}</p>
-                    <button id-mine={mechanic.id} myindex={index} id="client-serviceBtn" onClick={request}>Request Services</button>
-                </div>)
-                //  
-                :
-                   serviceAgents.length ?
-                   serviceAgents.map((mechanic, index) =><div key={mechanic.id} className="client-wrap">
-                    <p><span className="mechLabel">Name:</span> {mechanic.company}</p>
-                    <p><span className="mechLabel">specialty:</span> {mechanic.specialty}</p>
-                    <p><span className="mechLabel">Phone No.</span> {mechanic.phone}</p>
-                    <p><span className="mechLabel">Email:</span> {mechanic.email}</p>
-                    <p><span className="mechLabel">Address:</span> {mechanic.office_address}</p>
-                    <p><span className="mechLabel">City:</span> {mechanic.city}</p>
-                    <button id-mine={mechanic.id} myindex={index} id="client-serviceBtn" onClick={requestAgent}>Request Services</button>
-                   </div>):
-                   <p><img src={avatar} alt="avatar"/>Oops! Sorry we've No Service Agent at this location at the moment.</p>
-                
+            {mechanics === ""?<p style={{"color":"red"}}>Sorry our Service agents are currently unavailable.</p>:
+                <div>
+                    <p style={{"color":"green","fontSize":"1.4em"}}>{message}</p>
+                    { place.toLowerCase() === "all"?
+                        mechanics.map((mechanic,index) =><div  key={mechanic.id} className="client-wrap">
+                            <p><span className="mechLabel">Name:</span> {mechanic.company}</p>
+                            <p><span className="mechLabel">specialty:</span> {mechanic.specialty}</p>
+                            <p id-mine={mechanic.phone}><span className="mechLabel">Phone No.</span> {mechanic.phone}</p>
+                            <p><span className="mechLabel">Email:</span> {mechanic.email}</p>
+                            <p><span className="mechLabel">Address:</span> {mechanic.office_address}</p>
+                            <p><span className="mechLabel">City:</span> {mechanic.city}</p>
+                            <button id-mine={mechanic.id} myindex={index} id="client-serviceBtn" onClick={request}>Request Services</button>
+                        </div>)
+                        //  
+                        :
+                        serviceAgents.length ?
+                        serviceAgents.map((mechanic, index) =><div key={mechanic.id} className="client-wrap">
+                            <p><span className="mechLabel">Name:</span> {mechanic.company}</p>
+                            <p><span className="mechLabel">specialty:</span> {mechanic.specialty}</p>
+                            <p><span className="mechLabel">Phone No.</span> {mechanic.phone}</p>
+                            <p><span className="mechLabel">Email:</span> {mechanic.email}</p>
+                            <p><span className="mechLabel">Address:</span> {mechanic.office_address}</p>
+                            <p><span className="mechLabel">City:</span> {mechanic.city}</p>
+                            <button id-mine={mechanic.id} myindex={index} id="client-serviceBtn" onClick={requestAgent}>Request Services</button>
+                        </div>):
+                        <p><img src={avatar} alt="avatar"/>Oops! Sorry we've No Service Agent at this location at the moment.</p>
+                        
+                    }
+                </div>
             }
+           
         </div>
     )
 }
