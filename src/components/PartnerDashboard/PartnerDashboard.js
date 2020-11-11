@@ -8,7 +8,7 @@ const PartnerDashboard = ({customers, loadCustomerTable}) =>{
     const [errorMsg, setErrorMsg] = useState('');
     const [id, setId] = useState('');
     
-    //updates the remark 
+    //updates the remark for accepted Requests
     const confirmDelivery = () =>{
         Axios.put("https://automech-server.herokuapp.com/service/requests/done/"+id)
             .then(async (res) =>{
@@ -40,11 +40,11 @@ const PartnerDashboard = ({customers, loadCustomerTable}) =>{
                     setErrorMsg("");
                     setTimeout(() => {
                         loadCustomerTable();
-                    }, 3000);
+                    },2000);
                     setTimeout(() => {
                         confirmDelivery();
                         loadCustomerTable();
-                    }, 5000);
+                    },5000);
                     return
                 }
                 setErrorMsg("An Error Occured. Try again later!");
@@ -69,7 +69,7 @@ const PartnerDashboard = ({customers, loadCustomerTable}) =>{
                     setErrorMsg("");
                     setTimeout(() => {
                         loadCustomerTable();
-                    }, 1000);
+                    }, 2000);
                     return
                 }
                 setErrorMsg("An Error Occured. Try again later!");
@@ -107,13 +107,17 @@ const PartnerDashboard = ({customers, loadCustomerTable}) =>{
 
     return(
         <div>
-            {msg !==""? <p style={{"color":"green","textAlign":"center"}}>{msg}</p>:<p style={{"color":"red","textAlign":"center"}}>{errorMsg}</p>}
-            <table id='customersTable'>
-                <tbody>
-                    <tr>{tableHeader()}</tr>
-                    {renderTable()}
-                </tbody>
-            </table>
+            {customers.length < 1?<p>You don't have any transaction at the moment. Check back later!</p>:
+                <div>
+                    {msg !==""? <p style={{"color":"green","textAlign":"center"}}>{msg}</p>:<p style={{"color":"red","textAlign":"center"}}>{errorMsg}</p>}
+                    <table id='customersTable'>
+                        <tbody>
+                            <tr>{tableHeader()}</tr>
+                            {renderTable()}
+                        </tbody>
+                    </table>
+                </div>
+            }
         </div>
     )
 }

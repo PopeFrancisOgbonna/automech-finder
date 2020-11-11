@@ -71,7 +71,7 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
         alert(`Request Sent Successfully to ${data.agent_name}. You'll recieve a response soon!`);
         setTimeout(() => {
             setMessage('')
-        }, 5000);
+        },5000);
     }
 
     //Funtion to send request form filtered List
@@ -131,7 +131,7 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
         alert(`Request Sent Successfully to ${data.agent_name}. You'll recieve a response soon!`);
         setTimeout(() => {
             setMessage('')
-        }, 5000);
+        },5000);
         
     }
 
@@ -139,10 +139,10 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
 
     return (
         <div>
-            {mechanics === ""?<p style={{"color":"red"}}>Sorry our Service agents are currently unavailable.</p>:
+            {mechanics.lenght < 1?<p style={{"color":"red"}}>Sorry our Service agents are currently unavailable.</p>:
                 <div>
                     <p style={{"color":"green","fontSize":"1.4em"}}>{message}</p>
-                    { place.toLowerCase() === "all"?
+                    { place.toLowerCase() === "all" || place.toLowerCase() ===""?
                         mechanics.map((mechanic,index) =><div  key={mechanic.id} className="client-wrap">
                             <p><span className="mechLabel">Name:</span> {mechanic.company}</p>
                             <p><span className="mechLabel">specialty:</span> {mechanic.specialty}</p>

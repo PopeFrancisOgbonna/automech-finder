@@ -16,8 +16,7 @@ const Clients = ({bookHandle, place, placeHandle, mech,user, handleFilter, filte
    
     return (
         <div className="client-main-wrap">
-            <InfoPopUp/>
-            {place.toLowerCase() ==="all"? <h3>Our Service agents and their various locations</h3>: <h3>Our Service agents located at {place.toLowerCase()}</h3>}
+            {place.toLowerCase() ==="all" || place.toLowerCase() ===""? <h3>Our Service agents and their various locations</h3>: <h3>Our Service agents located at {place.toLowerCase()}</h3>}
             <div className="search-container">
                 <input className="searchInput" onChange={placeHandle()} type="text" placeholder="Enter City"/>
                 <button id="filterBtn" onClick={handleFilter()} >Search</button>
