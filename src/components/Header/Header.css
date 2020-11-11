@@ -38,10 +38,14 @@ span div{
 
 @media screen and (width:320px){
     .titles{
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     .navIcons{
-        height: 30px;
-        margin-left: 5px;
+        height: 10px;
+        margin-left: 1px;
+    }
+    .navs{
+        font-size: 0.9em;
+        margin: 2px;
     }
 }

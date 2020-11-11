@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import Axios from "axios";
 import logo from "./logo.jpeg"
 import './Login.css'
-
+import {InfoPopUp} from '../PopUp/PopUp';
 
 class Login extends React.Component{
     constructor(){
@@ -87,7 +87,7 @@ class Login extends React.Component{
     render(){
         return(
             <div>
-               
+               <InfoPopUp/>
                 <form id="loginForm" method="post" onSubmit={this.submitForm}>
                     <div className="formHeader">
                         <h2>Login</h2>

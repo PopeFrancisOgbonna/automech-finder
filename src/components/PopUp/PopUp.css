@@ -31,3 +31,17 @@
 .hide{
     display: none;
 }
+@media screen and (max-width:980px){
+    .popContents{
+        width: 80%;
+    }
+}
+@media screen and (width:320px){
+    .popOuter{
+        width: 99%;
+    }
+    .popContents{
+        width: 70%;
+        margin: 5% auto;
+    }
+}
