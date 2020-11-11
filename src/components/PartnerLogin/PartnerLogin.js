@@ -11,7 +11,7 @@ const PartnerLogin = () =>{
     const {register, handleSubmit } = useForm();
 
     const submit = (data) =>{
-        return Axios.post("http://localhost:8080/partners/login", data)
+        return Axios.post("https://automech-server.herokuapp.com/partners/login", data)
             .then(async (res) =>{
                 if(res.status === 200){
                     let partner = res.data[0];

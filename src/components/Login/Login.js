@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import Axios from "axios";
 import logo from "./logo.jpeg"
 import './Login.css'
-import {InfoPopUp} from '../PopUp/PopUp';
 
 class Login extends React.Component{
     constructor(){
@@ -29,7 +28,7 @@ class Login extends React.Component{
             fields["userName"] = "";
             fields["userPassword"] = "";
             this.setState({fields: fields});
-            return Axios.post("http://localhost:8080/clients/login", data)
+            return Axios.post("https://automech-server.herokuapp.com/clients/login", data)
                 .then(async (res) =>{
                     if(res.status === 200){
                         const user = await res.data[0];
@@ -87,7 +86,6 @@ class Login extends React.Component{
     render(){
         return(
             <div>
-               <InfoPopUp/>
                 <form id="loginForm" method="post" onSubmit={this.submitForm}>
                     <div className="formHeader">
                         <h2>Login</h2>

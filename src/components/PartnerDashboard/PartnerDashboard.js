@@ -10,7 +10,7 @@ const PartnerDashboard = ({customers, loadCustomerTable}) =>{
     
     //updates the remark 
     const confirmDelivery = () =>{
-        Axios.put("http://localhost:8080/service/requests/done/"+id)
+        Axios.put("https://automech-server.herokuapp.com/service/requests/done/"+id)
             .then(async (res) =>{
                 const updated = await res.data;
                 if(updated > 0){
@@ -31,7 +31,7 @@ const PartnerDashboard = ({customers, loadCustomerTable}) =>{
         // console.log(customers);
         const id = customers[row -1].id;
             setId(id);
-        Axios.put("http://localhost:8080/service/requests/accept/"+id)
+        Axios.put("https://automech-server.herokuapp.com/service/requests/accept/"+id)
             .then(async (res) =>{
                 const updated = await res.data;
                 if(updated > 0){
@@ -60,7 +60,7 @@ const PartnerDashboard = ({customers, loadCustomerTable}) =>{
         console.log(customers[row - 1])
         console.log(customers);
         const id = customers[row-1].id;
-        Axios.put("http://localhost:8080/service/requests/reject/"+id)
+        Axios.put("https://automech-server.herokuapp.com/service/requests/reject/"+id)
             .then(async (res) =>{
                 const updated = await res.data;
                 if(updated > 0){

@@ -25,7 +25,7 @@ const PartnerSignUp = () =>{
         if(password === confirm){
             console.log(message, sucessMsg);
             message = "";
-            return Axios.post("http://localhost:8080/partners", data)
+            return Axios.post("https://automech-server.herokuapp.com/partners", data)
             .then(async (res) =>{
                 const data = await res.data;
                 sucessMsg = `${data} Redirecting...`;

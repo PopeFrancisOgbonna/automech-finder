@@ -18,7 +18,7 @@ const Signup = () =>{
     const submit = (data) => {
         if(password === confirm){
             message="";
-                return Axios.post("https://automech-server.herokuapp.com/", data)
+                return Axios.post("https://automech-server.herokuapp.com/clients", data)
                 .then(async (res) =>{
                     const data = await res.data;
                     sucessMsg = `${data} Redirecting...`;

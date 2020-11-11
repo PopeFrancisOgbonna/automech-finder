@@ -42,7 +42,7 @@ class  ServicePage extends React.Component{
         this.setState({user:users});
     }
     getMechs = () =>{
-        Axios.get("http://localhost:8080/mechanics")
+        Axios.get("https://automech-server.herokuapp.com/mechanics")
             .then(async (res)=>{
                 const data = await res.data;
                 this.setState({mech: data})
