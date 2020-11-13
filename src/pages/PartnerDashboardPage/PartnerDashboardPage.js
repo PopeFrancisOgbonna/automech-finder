@@ -57,7 +57,7 @@ class PartnerDashboardPage extends React.Component{
     //request/transaction  table loader
     loadCustomerTable = () =>{
         let param ={"email":localStorage.getItem("partnerEmail"),"phone":localStorage.getItem("partnerPhone")}
-        Axios.post("https://automech-server.herokuapp.com/service/requests/agent",param)
+        Axios.post("https://automech-finder.herokuapp.com/service/requests/agent",param)
             .then(async (res) =>{
                 const c = await res.data;
                 this.setState({clients: c});
@@ -82,7 +82,7 @@ class PartnerDashboardPage extends React.Component{
                 
                 <div>
                     <img src={biz} alt="biz" style={{"width":"100%","height":"350px"}}/>
-                    <p>A Satisfied customer is the best business strategy of all, Chase the vision not money, the money will end
+                    <p style={{"textAlign":"center"}}>A Satisfied customer is the best business strategy of all, Chase the vision not money, the money will end
                         up following you.   
                     </p>
                 </div>

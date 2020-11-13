@@ -51,3 +51,7 @@
     background: #016674;
     cursor: pointer;
 }
+
+.tableContainer{
+    overflow: scroll;
+}
