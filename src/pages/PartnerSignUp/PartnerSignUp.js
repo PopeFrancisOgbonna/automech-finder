@@ -58,18 +58,12 @@ const PartnerSignUp = () =>{
                     <p>Be part of a community of service experts that have seen their Bussiness amplified with AutoMechanic Finder Platform.</p>
                 </div>
                 <div className="slider-container">
-                    {/* <div className="imgH">
-                        <img className="userImage" src={user1} alt="partner" />
-                        <p className="user">Mr. Kingsely Okafor</p>
-                    </div>
-                    <div className="testimony">
-                        <p>"Since I joined AutoMechanic Finder My Bussiness has grown financially!</p>
-                    </div> */}
+                   
                     <Carousel>
                         <Carousel.Item>
                             <img
-                            className="d-block "
-                            style={{"height":"250px", "width":"450px"}}
+                            className="d-block w-100"
+                            style={{"height":"250px"}}
                             src={user1}
                             alt="First slide"
                             />
@@ -80,8 +74,8 @@ const PartnerSignUp = () =>{
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
-                            className="d-block"
-                            style={{"height":"250px", "width":"450px"}}
+                            className="d-block w-100"
+                            style={{"height":"250px"}}
                             src={user2}
                             alt="Third slide"
                             />
@@ -93,8 +87,8 @@ const PartnerSignUp = () =>{
                         </Carousel.Item>
                         <Carousel.Item>
                             <img
-                            className="d-block"
-                            style={{"height":"250px", "width":"450px"}}
+                            className="d-block w-100"
+                            style={{"height":"250px"}}
                             src={user3}
                             alt="Third slide"
                             />
@@ -124,7 +118,8 @@ const PartnerSignUp = () =>{
                 </div>
                 <div className="sform">
                     <form onSubmit={handleSubmit(submitForm)}>
-                        <h2>Signup as an AutoMechanic!</h2>
+                        <h2 style={{"textAlign":"center"}}>Signup as an AutoMechanic!</h2>
+                        <hr/>
                         <div className="inputFormWrap">
                             <div>
                                 <label htmlFor="fullName">Full Name</label><br/>

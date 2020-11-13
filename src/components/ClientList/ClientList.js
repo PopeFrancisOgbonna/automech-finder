@@ -40,15 +40,15 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
                                     if(data1.toLowerCase() ===""){
                                     
                                         // alert(data.agent_name +" unavailable at the");
-                                        console.log( "afeter "+ popComp);
+                                        // console.log( "afeter "+ popComp);
                                         check('unavailable')
                                     }else if (data1.toLowerCase() ==="accepted"){
                                         setPopComp(data1.toLowerCase())
-                                        alert(`${data.agent_name} will be with you in a moment. Please wait!`)
+                                        // alert(`${data.agent_name} will be with you in a moment. Please wait!`)
                                         check("accepted");
                                     }else if(data1.toLowerCase() ==="rejected"){
                                         setPopComp(data1.toLowerCase())
-                                        alert(`Request Declined. Please choose another Agent`)
+                                        // alert(`Request Declined. Please choose another Agent`)
                                         check("rejected");
                                     }
                                 // }
@@ -105,11 +105,11 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
                                     check('unavailable')
                                 }else if (data1.toLowerCase() ==="accepted"){
                                     setPopComp(data1.toLowerCase())
-                                    alert(`${data.agent_name} will be with you in a moment. Please wait!`)
+                                    // alert(`${data.agent_name} will be with you in a moment. Please wait!`)
                                     check("accepted");
                                 }else if(data1.toLowerCase() ==="rejected"){
                                     setPopComp(data1.toLowerCase())
-                                    alert(`Request Declined. Please choose another Agent`)
+                                    // alert(`Request Declined. Please choose another Agent`)
                                     check("rejected");
                                 }
                             })

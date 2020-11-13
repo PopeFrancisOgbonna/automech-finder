@@ -16,7 +16,6 @@ function App() {
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route path="/" component={HomePage} exact />
-          {/* <Route path="/home" component={HomePage} exact/> */}
           <Route path="/login" exact component={Login}/>
           <Route path="/partner/login" exact component={PartnerLoginPage}/>
           <Route path="/register" exact component={SignUp}/>

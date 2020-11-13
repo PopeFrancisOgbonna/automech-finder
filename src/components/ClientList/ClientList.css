@@ -17,3 +17,8 @@
     width: 23rem;
     margin: 15px auto;
 }
+@media screen and (max-width:780px){
+    .client-wrap{
+        width: 85%;
+    }
+}

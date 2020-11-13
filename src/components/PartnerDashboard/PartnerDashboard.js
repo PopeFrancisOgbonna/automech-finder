@@ -107,7 +107,7 @@ const PartnerDashboard = ({customers, loadCustomerTable}) =>{
 
     return(
         <div>
-            {customers.length < 1?<p>You don't have any transaction at the moment. Check back later!</p>:
+            {customers.length < 1?<p style={{"color":"red","textAlign":"center","margin":"5px"}}>You don't have any transaction at the moment. Check back later!</p>:
                 <div>
                     {msg !==""? <p style={{"color":"green","textAlign":"center"}}>{msg}</p>:<p style={{"color":"red","textAlign":"center"}}>{errorMsg}</p>}
                     <table id='customersTable'>

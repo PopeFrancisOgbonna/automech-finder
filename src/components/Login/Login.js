@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import Axios from "axios";
-import logo from "./logo.jpeg"
+import logo from "./logo.jpeg";
 import './Login.css'
 
 class Login extends React.Component{
@@ -9,10 +9,14 @@ class Login extends React.Component{
         super()
         this.state = {
             fields: {},
-            errors: {}
+            errors: {},
+            msg: ''
         }
     }
     
+    handleMsg =(message)=>{
+        this.setState({msg:message})
+    }
     handleChange =(e)=>{
         let fields = this.state.fields;
         fields[e.target.name] = e.target.value;
@@ -27,6 +31,7 @@ class Login extends React.Component{
             console.log(this.state.fields)
             fields["userName"] = "";
             fields["userPassword"] = "";
+            this.handleMsg("Loading...")
             this.setState({fields: fields});
             return Axios.post("https://automech-server.herokuapp.com/clients/login", data)
                 .then(async (res) =>{
@@ -36,15 +41,18 @@ class Login extends React.Component{
                         localStorage.setItem("email", user.email);
                         localStorage.setItem("phone",user.phone);
                         console.log(user);
+                        this.handleMsg("Login Successful. Redirecting...")
                         setTimeout(() => {
                             window.location.href="/dashboard"
                         }, 3000);
                     }else{
                         window.alert("Invalid Email and Password.");
+                        this.handleMsg('')
                     }
                     // 
                 })
                 .catch((err) =>{
+                    this.handleMsg("");
                     window.alert(err);
                 });
            
@@ -108,7 +116,7 @@ class Login extends React.Component{
                         <p className="forgot"> Forgot password?</p>
                     </div>
                    <button id="loginBtn" type="submit">Login</button>
-                    
+                    <p style={{"color":"green"}}>{this.state.msg}</p>
                 </form>
             </div>
         )

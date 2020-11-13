@@ -35,8 +35,12 @@ span div{
     height: 40px;
     margin-left: 20px;
 }
-
-@media screen and (width:320px){
+@media screen and (max-width:429px){
+    .titles{
+        font-size: 1.8em;
+    }
+}
+@media screen and (max-width:372px){
     .titles{
         font-size: 1.5rem;
     }
@@ -49,3 +53,4 @@ span div{
         margin: 2px;
     }
 }
+

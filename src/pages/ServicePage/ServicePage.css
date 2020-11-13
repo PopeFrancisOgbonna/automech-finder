@@ -16,7 +16,7 @@
     
 }
 #actionBtn{
-    /* position: relative; */
+    /* position: absolute; */
     margin-top: 35rem;
     padding: 5px;
     font-size: 1.3em;

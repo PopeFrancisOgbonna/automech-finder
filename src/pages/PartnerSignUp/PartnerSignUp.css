@@ -3,7 +3,7 @@
     padding: 10px;
 }
 .caption{
-    width:  50%;
+    width:  60%;
     padding: 20px;
 }
 .slider-container{
@@ -66,8 +66,10 @@
     padding: 2px;
     margin:0 4px;
 }
-.sform form h1{
-    text-align: center;
+hr{
+    border-style: solid;
+    height: 3px;;
+    border-radius: 5px;
 }
 /* .sform form div {
     padding: 2px;
@@ -77,13 +79,13 @@
     padding: 4px;
 }
 .inputFormWrap select{
-    width: 100%;
+    width: 94%;
     padding: 4px;
 }
 #sendBtn{
     padding: 6px;
     width: 98%;
-    background: #e00303;
+    background: #8f6900;
     font-size: 1.5em;
     border-style: none;
     border-radius: 5px;
@@ -92,6 +94,7 @@
 }
 #sendBtn:hover{
     cursor: pointer;
+    background: #006a7c;
 }
 .faq{
     margin-top: 0;
@@ -105,12 +108,25 @@
     margin: 0 auto;
 }
 
-@media screen and (max-width:980px){
+@media screen and (max-width:450px){
+    .inputFormWrap{
+        display: flex;
+        flex-direction: column;
+    }
+    .inputFormWrap div{
+        width: 100%;
+    }
+    .inputFormWrap select{
+        width: 94%;
+    }
+}
+@media screen and (max-width:900px){
     .caption{
         width: 80%;
     }
     .slider-container{
-       width: 460px;
+       width: 85%;
+       margin: 2px auto;
     }
     .iconAds{
         width: 100%;
