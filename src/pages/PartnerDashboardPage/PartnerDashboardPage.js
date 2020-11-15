@@ -57,7 +57,7 @@ class PartnerDashboardPage extends React.Component{
     //request/transaction  table loader
     loadCustomerTable = () =>{
         let param ={"email":localStorage.getItem("partnerEmail"),"phone":localStorage.getItem("partnerPhone")}
-        Axios.post("https://automech-finder.herokuapp.com/service/requests/agent",param)
+        Axios.post("https://automech-server.herokuapp.com/service/requests/agent",param)
             .then(async (res) =>{
                 const c = await res.data;
                 this.setState({clients: c});
