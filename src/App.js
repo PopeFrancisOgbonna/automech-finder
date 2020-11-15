@@ -16,7 +16,7 @@ function App (){
   return (
     <div className="App">
       
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <Switch>
           <Route path="/" component={HomePage} exact />
           <Route path="/login" exact component={() =>{return <Login/>}}/>
