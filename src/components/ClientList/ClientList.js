@@ -57,7 +57,7 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
                                 console.log(err)
                             })
                             
-                    }, 20000);
+                    }, 60000);
                 }
             })
             .catch((err) =>{
@@ -117,7 +117,7 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
                                 console.log(err)
                             })
                             
-                    }, 20000);
+                    }, 60000);
                 }
             })
             .catch((err) =>{

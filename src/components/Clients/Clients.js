@@ -22,9 +22,9 @@ const Clients = ({bookHandle, place, placeHandle, mech,user, handleFilter, filte
                 <button id="filterBtn" onClick={handleFilter()} >Search</button>
             </div>
             <p>Enter City to filter your search</p>
-            {check === "unavailable"?<div><InfoPopUp company={cName} check={setCheck}/><p>Hello it worked. {check}</p></div>: 
-                check ==="rejected"?<div><RejectPopUp company={cName} check={setCheck}/><p>Hello it worked. {check}</p></div>:
-                check ==="accepted"?<div><AcceptPopUp company={cName} check={setCheck}/><p>Hello it worked. {check}</p></div>: null}
+            {check === "unavailable"?<div><InfoPopUp company={cName} check={setCheck}/></div>: 
+                check ==="rejected"?<div><RejectPopUp company={cName} check={setCheck}/></div>:
+                check ==="accepted"?<div><AcceptPopUp company={cName} check={setCheck}/></div>: null}
             <ClientList mechanics={mechanics} check={setCheck} setName={setCName} user={user}  place={place} filtered={filtered} serviceAgents={serviceAgents}/>
             <button className="backtobook" onClick={()=>{bookHandle("book"); handleFilter(); clearPlace()} }>Back</button>
         </div>
