@@ -53,9 +53,9 @@ const HomePage = () =>{
                 </div>
             </div>
             <div className="banner">
-                <p>2 Million+ <br/>Customers Served</p> 
-                <p>35,000+ <br/> Verified Experts</p>
-                <p>60 <br/> Live Services</p>
+                <p className="bannerP">2 Million+ <br/>Customers Served</p> 
+                <p className="bannerP">35,000+ <br/> Verified Experts</p>
+                <p className="bannerP">60 <br/> Live Services</p>
             </div>
             <Footer/>
         </div>

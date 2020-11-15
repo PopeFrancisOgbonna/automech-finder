@@ -54,4 +54,5 @@
 
 .tableContainer{
     overflow: scroll;
+    margin: 5px;
 }

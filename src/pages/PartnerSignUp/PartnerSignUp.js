@@ -20,10 +20,10 @@ const PartnerSignUp = () =>{
    
     
     const submitForm = (data) =>{
-        console.log(data);
-        console.log(password, confirm);
+        if(message ===""){
+            sucessMsg="Loading...";
+        }
         if(password === confirm){
-            console.log(message, sucessMsg);
             message = "";
             return Axios.post("https://automech-server.herokuapp.com/partners", data)
             .then(async (res) =>{

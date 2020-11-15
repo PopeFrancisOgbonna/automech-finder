@@ -11,6 +11,7 @@ const PartnerLogin = () =>{
     const {register, handleSubmit } = useForm();
 
     const submit = (data) =>{
+            sucessMsg="Loading"
         return Axios.post("https://automech-server.herokuapp.com/partners/login", data)
             .then(async (res) =>{
                 if(res.status === 200){
