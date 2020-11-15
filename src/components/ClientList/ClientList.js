@@ -24,7 +24,7 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
         }
         setName(mechanics[index].company);
 
-        Axios.post("https://automech-finder.herokuapp.com/service/request",data)
+        Axios.post("https://automech-server.herokuapp.com/service/request",data)
             .then(async (res) =>{
                 let id = await res.data[0].id;
                 console.log(id);
@@ -33,7 +33,7 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
                     setTimeout(() => {
                         console.log(id);
                         console.log('before ' +popComp)
-                        Axios.get("https://automech-finder.herokuapp.com/service/requests/"+ id)
+                        Axios.get("https://automech-server.herokuapp.com/service/requests/"+ id)
                             .then(async (res) =>{
                                 let data1 = await res.data[0].remark;
                                 // if(data1){
