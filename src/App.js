@@ -10,18 +10,24 @@ import SignUp  from './pages/SignUpPage/SignUpPage';
 import PartnerLoginPage from "./pages/PartnerLoginPage/PartnerLoginPage"
 import PartnerDashboardPage from "./pages/PartnerDashboardPage/PartnerDashboardPage";
 
-function App() {
+function App (){
+  
+  
   return (
     <div className="App">
+      
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route path="/" component={HomePage} exact />
-          <Route path="/login" exact component={Login}/>
+          <Route path="/login" exact component={() =>{return <Login/>}}/>
           <Route path="/partner/login" exact component={PartnerLoginPage}/>
-          <Route path="/register" exact component={SignUp}/>
+          <Route path="/register" exact component={() =>{return <SignUp/>}}/>
           <Route path="/partner" exact component={PartnerSignUp} />
-          <Route path="/dashboard" exact component={ServicePage}/>
-          <Route path="/partner/dashboard" exact component={PartnerDashboardPage}/>
+          <Route path="/dashboard" exact component={() =>{
+              return (localStorage.getItem('isClient') === "true" ? <ServicePage /> : <Redirect to="login"/>)
+          }}/>
+          <Route path="/partner/dashboard" exact component={()=>{
+              return (localStorage.getItem("isMechanic") === "true"?<PartnerDashboardPage/> : <Redirect to="login"/>)}}/>
           <Route path="/404" component={NotFound} />
           <Redirect to="/404"/>
         </Switch>

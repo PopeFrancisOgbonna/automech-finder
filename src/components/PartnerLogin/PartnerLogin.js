@@ -21,6 +21,7 @@ const PartnerLogin = () =>{
                     localStorage.setItem("partnerCompany",partner.company);
                     localStorage.setItem("partnerPhone", partner.phone);
                     localStorage.setItem("partnerEmail", partner.email);
+                    localStorage.setItem("isMechanic",true);
                     setTimeout(() => {
                         window.location.href="/partner/dashboard"
                     }, 3000);

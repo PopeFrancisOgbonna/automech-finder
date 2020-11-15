@@ -40,9 +40,10 @@ class  ServicePage extends React.Component{
         
         var  users = {name, email, phone}
         this.setState({user:users});
+        console.log(this.state.user)
     }
     getMechs = () =>{
-        Axios.get("https://automech-finder.herokuapp.commechanics")
+        Axios.get("https://automech-server.herokuapp.com/mechanics")
             .then(async (res)=>{
                 const data = await res.data;
                 this.setState({mech: data})
@@ -66,6 +67,9 @@ class  ServicePage extends React.Component{
         
     }
 
+componentWillUnmount(){
+    localStorage.clear();
+}
     render(){
         return (
             <div>

@@ -5,7 +5,7 @@ import logo from "./logo.jpeg";
 import './Login.css'
 
 class Login extends React.Component{
-    constructor(){
+    constructor(props){
         super()
         this.state = {
             fields: {},
@@ -40,11 +40,12 @@ class Login extends React.Component{
                         localStorage.setItem("userName", user.name);
                         localStorage.setItem("email", user.email);
                         localStorage.setItem("phone",user.phone);
+                        localStorage.setItem("isClient",true);
                         console.log(user);
                         this.handleMsg("Login Successful. Redirecting...")
                         setTimeout(() => {
-                            window.location.href="/dashboard"
-                        }, 3000);
+                         window.location.href="/dashboard"
+                        }, 4000);
                     }else{
                         window.alert("Invalid Email and Password.");
                         this.handleMsg('')
@@ -91,7 +92,9 @@ class Login extends React.Component{
         })
         return formIsValid;
     }
+    
     render(){
+        // const {handleClient} = this.props;
         return(
             <div>
                 <form id="loginForm" method="post" onSubmit={this.submitForm}>

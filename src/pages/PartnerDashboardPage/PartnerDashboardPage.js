@@ -73,7 +73,9 @@ class PartnerDashboardPage extends React.Component{
         this.loadPartner();
         this.loadCustomerTable();
     }
-
+    componentWillUnmount(){
+        localStorage.clear();
+    }
     render(){
         return (
             <div>
