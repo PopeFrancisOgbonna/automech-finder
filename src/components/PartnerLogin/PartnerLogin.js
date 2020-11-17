@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import {Link} from "react-router-dom";
 import logo from "./logo.jpeg";
 import {useForm} from 'react-hook-form';
 import Axios from 'axios';
 import './PartnerLogin.css'
+import LoaderButton from '../LoaderButton/LoaderButton'
 
 let message = "";
 let sucessMsg = "";
 const PartnerLogin = () =>{
     const {register, handleSubmit } = useForm();
+    const [loading, setLoading] = useState('false');
 
     const submit = (data) =>{
+            setLoading('true');
             sucessMsg="Loading"
         return Axios.post("https://automech-server.herokuapp.com/partners/login", data)
             .then(async (res) =>{
@@ -28,10 +31,12 @@ const PartnerLogin = () =>{
                     }, 3000);
                 }else{
                     message = res.data;
+                    setLoading('false')
                 }
             })
             .catch((err) =>{
                 message = `${err}`;
+                setLoading('false');
             })
     }
     return(
@@ -56,7 +61,7 @@ const PartnerLogin = () =>{
                     <p className="forgot"> Forgot password?</p>
                 </div>
                 <div>
-                    <button id="loginBtn" type="submit">Login</button>
+                   { loading === "false"? <button id="loginBtn" type="submit">Login</button>: <LoaderButton/>}
                     {message !== ""? <p style={{"color":"red"}}>{message}</p>: <p style={{"color":"green"}}>{sucessMsg}</p>}
                 </div>
             </form>

@@ -7,7 +7,6 @@ import Axios from "axios";
 
 const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, user}) =>{
     const [message, setMessage] = useState('');
-    const [popComp, setPopComp] = useState('accepted');
 
     //function to send request from unfiltered List
     const request = (e) =>{
@@ -32,24 +31,19 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
                     setMessage("Request Delivered to Agent Successfully!");
                     setTimeout(() => {
                         console.log(id);
-                        console.log('before ' +popComp)
                         Axios.get("https://automech-server.herokuapp.com/service/requests/"+ id)
                             .then(async (res) =>{
                                 let data1 = await res.data[0].remark;
                                 // if(data1){
+                                    console.log(data1);
                                     if(data1.toLowerCase() ===""){
-                                    
-                                        // alert(data.agent_name +" unavailable at the");
-                                        // console.log( "afeter "+ popComp);
                                         check('unavailable')
-                                    }else if (data1.toLowerCase() ==="accepted"){
-                                        setPopComp(data1.toLowerCase())
-                                        // alert(`${data.agent_name} will be with you in a moment. Please wait!`)
-                                        check("accepted");
-                                    }else if(data1.toLowerCase() ==="rejected"){
-                                        setPopComp(data1.toLowerCase())
-                                        // alert(`Request Declined. Please choose another Agent`)
-                                        check("rejected");
+                                    }
+                                    else if (data1.toLowerCase() ==="delivered"){
+                                         check('accepted');
+                                    }
+                                    else if(data1.toLowerCase() ==="rejected"){
+                                         check('rejected');
                                     }
                                 // }
                             })
@@ -99,17 +93,10 @@ const ClientList = ({mechanics, place, serviceAgents,check,setName, filtered, us
                             .then(async (res) =>{
                                 let data1 = res.data[0].remark;
                                 if(data1.toLowerCase() ===""){
-                                    
-                                    // alert(data.agent_name +" unavailable at the");
-                                    console.log( "afeter "+ popComp);
-                                    check('unavailable')
-                                }else if (data1.toLowerCase() ==="accepted"){
-                                    setPopComp(data1.toLowerCase())
-                                    // alert(`${data.agent_name} will be with you in a moment. Please wait!`)
+                                     check('unavailable')
+                                }else if (data1.toLowerCase() ==="delivered"){
                                     check("accepted");
                                 }else if(data1.toLowerCase() ==="rejected"){
-                                    setPopComp(data1.toLowerCase())
-                                    // alert(`Request Declined. Please choose another Agent`)
                                     check("rejected");
                                 }
                             })

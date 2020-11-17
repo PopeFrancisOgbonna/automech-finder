@@ -6,31 +6,14 @@ import "./PartnerDashboard.css";
 const PartnerDashboard = ({customers, loadCustomerTable}) =>{
     const [msg, setMsg] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
-    const [id, setId] = useState('');
     
-    //updates the remark for accepted Requests
-    const confirmDelivery = () =>{
-        Axios.put("https://automech-server.herokuapp.com/service/requests/done/"+id)
-            .then(async (res) =>{
-                const updated = await res.data;
-                if(updated > 0){
-                    setMsg("Service Delivery Confirmed.");
-                    setErrorMsg("");
-                    return
-                }
-            })
-            .catch((err) =>{
-                console.log(err);
-                setMsg("")
-            });
-    }
+    //Function to accept Client Service Request
     const acceptRequest = (e) =>{
         const row = e.currentTarget.getAttribute("customer-details")
         // console.log(row);
         // console.log(customers[row - 1])
         // console.log(customers);
         const id = customers[row -1].id;
-            setId(id);
         Axios.put("https://automech-server.herokuapp.com/service/requests/accept/"+id)
             .then(async (res) =>{
                 const updated = await res.data;
@@ -41,10 +24,25 @@ const PartnerDashboard = ({customers, loadCustomerTable}) =>{
                     setTimeout(() => {
                         loadCustomerTable();
                     },2000);
+                    //Update the server for Service delivery message
                     setTimeout(() => {
-                        confirmDelivery();
-                        loadCustomerTable();
-                    },5000);
+                        Axios.put("https://automech-server.herokuapp.com/service/requests/done/"+id)
+                        .then(async (res) =>{
+                            const updated = await res.data;
+                            console.log(updated);
+                            if(updated > 0){
+                                setMsg("Service Delivery Confirmed.");
+                                setErrorMsg("");
+                                loadCustomerTable();
+                                return
+                            }
+                        })
+                        .catch((err) =>{
+                            console.log(err);
+                            setMsg("")
+                        });
+                        
+                    }, 5000);
                     return
                 }
                 setErrorMsg("An Error Occured. Try again later!");

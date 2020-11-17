@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import Axios from "axios";
 import logo from "./logo.jpeg";
 import './Login.css'
+import LoaderButton from "../LoaderButton/LoaderButton";
 
 class Login extends React.Component{
     constructor(props){
@@ -10,10 +11,14 @@ class Login extends React.Component{
         this.state = {
             fields: {},
             errors: {},
-            msg: ''
+            msg: '',
+            loading: false
         }
     }
     
+    handleLoading = (msg) =>{
+        this.setState({loading:msg})
+    }
     handleMsg =(message)=>{
         this.setState({msg:message})
     }
@@ -25,6 +30,7 @@ class Login extends React.Component{
 
     submitForm = (e) =>{
         e.preventDefault();
+        this.handleLoading('true');
         if(this.validateForm()){
             const data = this.state.fields;
             let fields = {};
@@ -49,14 +55,18 @@ class Login extends React.Component{
                     }else{
                         window.alert("Invalid Email and Password.");
                         this.handleMsg('')
+                        this.handleLoading('false')
                     }
                     // 
                 })
                 .catch((err) =>{
                     this.handleMsg("");
                     window.alert(err);
+                    this.handleLoading('false');
                 });
            
+        }else{
+            this.handleLoading('false')
         }
     }
 
@@ -118,7 +128,7 @@ class Login extends React.Component{
                         <Link className="partnerLogin" to="/partner/login" >Click to Login as a Mechanic</Link>
                         <p className="forgot"> Forgot password?</p>
                     </div>
-                   <button id="loginBtn" type="submit">Login</button>
+                   { this.state.loading === 'true'?<LoaderButton/>:<button id="loginBtn" type="submit">Login</button>}
                     <p style={{"color":"green"}}>{this.state.msg}</p>
                 </form>
             </div>

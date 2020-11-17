@@ -53,6 +53,6 @@
 }
 
 .tableContainer{
-    overflow: scroll;
-    margin: 5px;
+    overflow-x: scroll;
+    margin: 5px 10px;
 }

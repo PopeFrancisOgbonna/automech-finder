@@ -1,0 +1,17 @@
+.pageloader-container{
+    width: 80%;
+    text-align: center;
+   color: #02b4e0;
+}
+
+.page-loader-logo{
+
+    border-radius: 50%;
+    width: 40%;
+    height: auto;
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

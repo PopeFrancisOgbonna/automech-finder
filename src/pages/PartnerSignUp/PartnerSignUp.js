@@ -12,17 +12,20 @@ import hand from "./hand.png";
 import {useForm} from "react-hook-form";
 import Axios from 'axios';
 import "./PartnerSignUp.css";
+import LoaderButton from '../../components/LoaderButton/LoaderButton';
 
 
 let message = "" ;
 let sucessMsg = "";
 const PartnerSignUp = () =>{
-   
+   const [loading, setLoading] = useState('false');
     
     const submitForm = (data) =>{
+        setLoading('true');
         if(message ===""){
             sucessMsg="Loading...";
         }
+        console.log(data);
         if(password === confirm){
             message = "";
             return Axios.post("https://automech-server.herokuapp.com/partners", data)
@@ -35,11 +38,13 @@ const PartnerSignUp = () =>{
                
             })
             .catch((err)=>{
-                return message = err + " Please try again.";
+                setLoading('false');
+                message = err + " Please try again.";
+                return
             })
         }else{
             message = "Password do not match."
-            console.log(message, sucessMsg);
+            setLoading('false');
         }
         
     }
@@ -188,7 +193,7 @@ const PartnerSignUp = () =>{
                         
                         <div>
                         { message !== ""?<p style={{"color":"red"}}>{message}</p>: <p style={{"color":"green"}}>{sucessMsg}</p> }
-                            <input id="sendBtn"  type="submit" value="Create Account"/>
+                            {loading ==='true'?<LoaderButton/>:<input id="sendBtn"  type="submit" value="Create Account"/>}
                         </div>
                     </form>
                 </div>

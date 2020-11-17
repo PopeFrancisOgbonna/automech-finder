@@ -4,6 +4,7 @@ import {useForm } from "react-hook-form";
 import Axios from "axios";
 import Pics from "./Capture.PNG";
 import "./Signup.css";
+import LoaderButton from "../LoaderButton/LoaderButton";
 
 
 
@@ -13,9 +14,16 @@ const Signup = () =>{
     const {register, handleSubmit} = useForm();
     const [password, setPassword] = useState('');
     const [confirm, setConfirm] = useState('')
+    const [loading, setLoading] = useState('false');
 
 
     const submit = (data) => {
+        setLoading('true');
+        if(data.fullName==="" || data.mail=== "" || data.password === "" || data.phone === ""){
+            setLoading('false');
+            message="Fill all Fields.";
+            return
+        }
         if(password === confirm){
             message="";
                 return Axios.post("https://automech-server.herokuapp.com/clients", data)
@@ -28,10 +36,14 @@ const Signup = () =>{
                    
                 })
                 .catch((err)=>{
-                    return message = err + " Please try again.";
+                    setLoading('false');
+                    message = err + " Please try again.";
+                    return 
+                    
                 })
         }else{
             message="Password do not Match.";
+            setLoading('false')
         }
         
     };
@@ -74,9 +86,8 @@ const Signup = () =>{
                                 onChange={ (e) =>setConfirm(e.target.value)}
                             />
                         </div>
-                         { message !== ""?<p style={{"color":"red"}}>{message}</p>: <p style={{"color":"green"}}>{sucessMsg}</p> }
-
-                        <button id="regBtn" type="submit">Create Account</button>
+                        {loading ==='true'?<LoaderButton/>:<button id="regBtn" type="submit">Create Account</button>}
+                        { message !== ""?<p style={{"color":"red"}}>{message}</p>: <p style={{"color":"green"}}>{sucessMsg}</p> }
                     </form>
                 </div>
             </div>

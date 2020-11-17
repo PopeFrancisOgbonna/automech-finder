@@ -2,7 +2,7 @@
     display: flex;
     max-width: 61%;
     padding: 10px;
-    margin: 3% auto;
+    margin: 5% auto;
     /* flex-wrap: wrap; */
     border: 2px solid rgb(252, 206, 80);
     box-shadow: 0 0 14px #4c4c4c;
@@ -71,7 +71,7 @@
        flex-direction: column;
    } 
    .sign-container{
-       margin-bottom: 0;
+       margin-bottom: 25px;
    }
    .regDiv {
        width: 100%;
