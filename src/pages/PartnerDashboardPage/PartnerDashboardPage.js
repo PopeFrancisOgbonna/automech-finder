@@ -15,20 +15,6 @@ class PartnerDashboardPage extends React.Component{
     constructor(){
         super()
         this.state ={
-            // customers: [
-            //     {id:'1',name: 'Francis Sunday', phone: '07031620728', date:'12-oct-2020',status:'Pending',
-            //         remark:''
-            //     },
-            //     {id:'2',name: 'John Amos', phone: '07031620234', date:'01-oct-2020',status:'delivered',
-            //         remark:'accepted'
-            //     },
-            //     {id:'3',name: 'Chioma Okafor', phone: '08131620228', date:'08-mar-2020',status:'canceled',
-            //         remark:'rejected'
-            //     },
-            //     {id:'4',name: 'Francis Sunday', phone: '07031620728', date:'12-oct-2020',status:'delivered',
-            //         remark:'accepted'
-            //     }
-            // ],
             partner: {},
             clients: [],
             errors: '',
@@ -38,15 +24,19 @@ class PartnerDashboardPage extends React.Component{
 
     //Loads mechanic partners to partner state object
     loadPartner = () =>{
-        const name = localStorage.getItem("partnerName");
-        const email = localStorage.getItem("partnerEmail");
-        const company = localStorage.getItem("partnerCompany");
-        const phone = localStorage.getItem("partnerPhone");
-        let data ={
-            name, email, company, phone
+        try {
+            const name = localStorage.getItem("partnerName");
+            const email = localStorage.getItem("partnerEmail");
+            const company = localStorage.getItem("partnerCompany");
+            const phone = localStorage.getItem("partnerPhone");
+            let data ={
+                name, email, company, phone
+            }
+            this.setState({partner: data});
+            console.log(data);
+        } catch (error) {
+            alert('Your browser is in incognito mode. Turn it off and try again!')
         }
-        this.setState({partner: data});
-        console.log(data);
     }
 
     //function to toggle the request log table
@@ -56,7 +46,12 @@ class PartnerDashboardPage extends React.Component{
 
     //request/transaction  table loader
     loadCustomerTable = () =>{
-        let param ={"email":localStorage.getItem("partnerEmail"),"phone":localStorage.getItem("partnerPhone")}
+        let param
+        try {
+            param ={"email":localStorage.getItem("partnerEmail"),"phone":localStorage.getItem("partnerPhone")}
+        } catch (error) {
+            alert('Turn off incognito mode and Try again!')
+        }
         Axios.post("https://automech-server.herokuapp.com/service/requests/agent",param)
             .then(async (res) =>{
                 const c = await res.data;
@@ -74,7 +69,12 @@ class PartnerDashboardPage extends React.Component{
         this.loadCustomerTable();
     }
     componentWillUnmount(){
-        localStorage.clear();
+        //Clears the local storage data
+        try {
+            localStorage.clear();
+        } catch (error) {
+            alert('Your browser is in incognito mode. Turn it off and try again!')
+        }
     }
     render(){
         return (

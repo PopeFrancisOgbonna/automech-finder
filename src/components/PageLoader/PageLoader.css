@@ -1,15 +1,15 @@
 .pageloader-container{
+    margin: 3% auto;
     width: 80%;
     text-align: center;
    color: #02b4e0;
 }
 
 .page-loader-logo{
-
     border-radius: 50%;
     width: 40%;
-    height: auto;
-    animation: spin 2s linear infinite;
+    height: 40%;
+    animation: spin 5s linear infinite;
 }
 @keyframes spin {
     0% { transform: rotate(0deg); }

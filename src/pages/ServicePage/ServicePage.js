@@ -34,13 +34,17 @@ class  ServicePage extends React.Component{
         console.log(this.state.user)
     }
     getUser = () =>{
-        const name = localStorage.getItem('userName');
-        const email = localStorage.getItem('email');
-        const phone = localStorage.getItem('phone');
-        
-        var  users = {name, email, phone}
-        this.setState({user:users});
-        console.log(this.state.user)
+        try {
+            const name = localStorage.getItem('userName');
+            const email = localStorage.getItem('email');
+            const phone = localStorage.getItem('phone');
+            
+            var  users = {name, email, phone}
+            this.setState({user:users});
+            console.log(this.state.user)
+        } catch (error) {
+            alert("Your browser is in incognito mode turn it off and try again!");
+        }
     }
     getMechs = () =>{
         Axios.get("https://automech-server.herokuapp.com/mechanics")
@@ -68,7 +72,11 @@ class  ServicePage extends React.Component{
     }
 
 componentWillUnmount(){
-    localStorage.clear();
+    try {
+        localStorage.clear();
+    } catch (error) {
+        alert("Your browser is in incognito mode turn it off and try again!");
+    }
 }
     render(){
         return (

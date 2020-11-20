@@ -42,16 +42,20 @@ class Login extends React.Component{
             return Axios.post("https://automech-server.herokuapp.com/clients/login", data)
                 .then(async (res) =>{
                     if(res.status === 200){
-                        const user = await res.data[0];
-                        localStorage.setItem("userName", user.name);
-                        localStorage.setItem("email", user.email);
-                        localStorage.setItem("phone",user.phone);
-                        localStorage.setItem("isClient",true);
-                        console.log(user);
-                        this.handleMsg("Login Successful. Redirecting...")
-                        setTimeout(() => {
-                         window.location.href="/dashboard"
-                        }, 4000);
+                        try {
+                            const user = await res.data[0];
+                            localStorage.setItem("userName", user.name);
+                            localStorage.setItem("email", user.email);
+                            localStorage.setItem("phone",user.phone);
+                            localStorage.setItem("isClient",true);
+                            console.log(user);
+                            this.handleMsg("Login Successful. Redirecting...")
+                            setTimeout(() => {
+                            window.location.href="/dashboard"
+                            }, 4000);
+                        } catch (error) {
+                            alert('Your browser is in incognito mode. Turn it off and try again!')
+                        }
                     }else{
                         window.alert("Invalid Email and Password.");
                         this.handleMsg('')

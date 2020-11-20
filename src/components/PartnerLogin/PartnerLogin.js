@@ -18,17 +18,21 @@ const PartnerLogin = () =>{
         return Axios.post("https://automech-server.herokuapp.com/partners/login", data)
             .then(async (res) =>{
                 if(res.status === 200){
-                    let partner = res.data[0];
-                    message = "";
-                    sucessMsg ="Login successful. Redirecting...";
-                    localStorage.setItem("partnerName",partner.name);
-                    localStorage.setItem("partnerCompany",partner.company);
-                    localStorage.setItem("partnerPhone", partner.phone);
-                    localStorage.setItem("partnerEmail", partner.email);
-                    localStorage.setItem("isMechanic",true);
-                    setTimeout(() => {
-                        window.location.href="/partner/dashboard"
-                    }, 3000);
+                    try {
+                        let partner = res.data[0];
+                        message = "";
+                        sucessMsg ="Login successful. Redirecting...";
+                        localStorage.setItem("partnerName",partner.name);
+                        localStorage.setItem("partnerCompany",partner.company);
+                        localStorage.setItem("partnerPhone", partner.phone);
+                        localStorage.setItem("partnerEmail", partner.email);
+                        localStorage.setItem("isMechanic",true);
+                        setTimeout(() => {
+                            window.location.href="/partner/dashboard"
+                        }, 3000);
+                    } catch (error) {
+                        alert('Your browser is in incognito mode. Turn it off and try again!')
+                    }
                 }else{
                     message = res.data;
                     setLoading('false')
